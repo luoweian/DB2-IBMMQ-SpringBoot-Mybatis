@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ftzmis.mq.mapper.TGetMessMapper">
+    <resultMap id="BaseResultMap" type="com.ftzmis.mq.model.TGetMess">
+        <id column="AREANO" jdbcType="CHAR" property="areaNo"/>
+        <result column="SUBMITDATE" jdbcType="CHAR" property="submitDate"/>
+        <result column="REVDATE" jdbcType="DATE" property="revDate"/>
+        <result column="REVTIME" jdbcType="DATE" property="revTime"/>
+        <result column="REPORTNO" jdbcType="TIME" property="reportNo"/>
+        <result column="REGNUMB" jdbcType="CHAR" property="regNumb"/>
+        <result column="RESULTCODE" jdbcType="CHAR" property="resultCode"/>
+        <result column="RESULTMESS" jdbcType="CHAR" property="resultMess"/>
+        <result column="XMLCONTENT" jdbcType="CHAR" property="xmlContent"/>
+    </resultMap>
+
+
+    <insert id="insertReturnMessage" parameterType="com.ftzmis.mq.model.TGetMess">
+        insert into FTZMIS.GETMESS (areaNo, submitDate, revDate,
+          revTime, reportNo, regNumb,
+          resultCode, resultMess, xmlContent)
+        values (#{areaNo}, #{submitDate}, #{revDate},
+          #{revTime}, #{reportNo}, #{regNumb},
+          #{resultCode}, #{resultMess}, #{xmlContent})
+      </insert>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+    select  * from FTZMIS.GETMESS where revTime = '09:25:57'
+  </select>
+
+    <delete id="delete">
+        delete from FTZMIS.GETMESS where areaNo = '666'
+    </delete>
+
+
+</mapper>
